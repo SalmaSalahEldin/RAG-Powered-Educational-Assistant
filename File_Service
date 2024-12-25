@@ -1,0 +1,209 @@
+import os
+import fitz
+from langchain_experimental.text_splitter import SemanticChunker
+from langchain_openai import OpenAIEmbeddings
+from langchain_community.vectorstores import Chroma
+from Handling_Structured_Data import DocumentAnalysisParser
+import asyncio
+from dotenv import load_dotenv
+import warnings
+import logging
+import psycopg2
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+logging.getLogger("chromadb").setLevel(logging.CRITICAL)
+logging.getLogger("httpx").setLevel(logging.CRITICAL)
+logging.getLogger("azure").setLevel(logging.CRITICAL)
+logging.getLogger("ingester").setLevel(logging.CRITICAL)
+logging.getLogger("azure.core.pipeline.policies.http_logging_policy").setLevel(logging.CRITICAL)
+
+file_path = "/home/salma/Downloads/Project Management.pdf"
+
+class AiCompanyFileService:
+    def __init__(self):
+
+        load_dotenv()
+
+        self.db_config = {
+            "dbname": os.environ.get("DB_NAME"),
+            "user": os.environ.get("DB_USER"),
+            "password": os.environ.get("DB_PASSWORD"),
+            "host": os.environ.get("DB_HOST"),
+            "port": int(os.environ.get("DB_PORT", 5432))
+        }
+
+        self.collection_name = "PDFs"
+        self.API_KEY = os.environ["OPENAI_API_KEY"]
+        self.embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
+        self.PDFs_chunks_path = os.path.curdir + f"/Chroma/"
+        self.chunks_vectorstore = Chroma(
+            collection_name=self.collection_name,
+            embedding_function=self.embeddings,
+            persist_directory=self.PDFs_chunks_path,
+        )
+
+        self.db_config = {
+            "dbname": os.environ.get("DB_NAME"),
+            "user": os.environ.get("DB_USER"),
+            "password": os.environ.get("DB_PASSWORD"),
+            "host": os.environ.get("DB_HOST"),
+            "port": int(os.environ.get("DB_PORT", 5432))
+        }
+
+        self.start_connection = self.connect_to_postgres()
+        self.cursor = self.start_connection.cursor()
+
+
+    def connect_to_postgres(self):
+        connection = psycopg2.connect(**self.db_config)
+        return connection
+
+    def _response(self, data, type):
+        response = {"data": data,
+                    "type": type}
+        return response
+
+    async def extract_tables_azure(self, file_path):
+        parser = DocumentAnalysisParser()
+        await parser.pdf_to_postgres(file_path)
+
+    async def document_uploading(self, file_path):
+        table_extraction_task = asyncio.create_task(self.extract_tables_azure(file_path))
+        try:
+            doc = fitz.open(file_path)
+            documents = []
+            for page_num in range(doc.page_count):
+                page = doc.load_page(page_num)
+                text = page.get_text("text")
+                documents.append({
+                    "text": text,
+                    "page_number": page_num + 1,
+                    "metadata": {
+                        "page_number": page_num + 1,
+                    }
+                })
+
+        except Exception as e:
+            return self._response(f"Error reading PDF with PyMuPDF: {e}", "Error")
+
+        corrected_docs = [doc["text"] for doc in documents]
+
+        text_splitter = SemanticChunker(self.embeddings)
+        chunks = text_splitter.create_documents(corrected_docs)
+        chunked_docs = [doc.page_content for doc in chunks]
+
+        unique_filename = os.path.basename(file_path)
+        book_title = os.path.splitext(unique_filename)[0]
+
+        meta_data = {
+            "book_title":book_title,
+        }
+
+        ids = [f"{book_title}_id{x}" for x in range(len(chunked_docs))]
+        metadatas = [
+            {**meta_data, "page_number": documents[i % len(documents)]["page_number"]}
+            for i in range(len(chunked_docs))
+        ]
+        print("\nChunks and their metadata:")
+        for i, chunk in enumerate(chunked_docs):
+            print(f"Chunk {i + 1}:")
+            print(f"Text: {chunk}")
+            print(f"Metadata: {metadatas[i]}")
+            print("------")
+
+        try:
+            dbchunks = self.chunks_vectorstore.from_texts(
+                texts=chunked_docs,
+                embedding=self.embeddings,
+                metadatas=metadatas,
+                ids=ids,
+                persist_directory=self.PDFs_chunks_path,
+                collection_name=self.collection_name
+            )
+            dbchunks.persist()
+            print("Chroma index loaded or created successfully.")
+        except RuntimeError as e:
+            print("Creating Chroma index from scratch due to RuntimeError:", str(e))
+        except Exception as e:
+            return self._response(f"Error occurred: {e}", "Error")
+
+        combined_table = await table_extraction_task
+        if combined_table is not None:
+            print("Tables extracted and saved.")
+
+        return self._response(f"Done inserting {book_title} embeddings", "validate")
+
+
+    def delete_documents_by_ids(self, file_path):
+        try:
+            unique_filename = os.path.basename(file_path)
+            unique_filename = os.path.splitext(unique_filename)[0]
+
+            docs = self.chunks_vectorstore.get()
+
+            ids_list = docs.get("ids", [])
+
+            ids_to_delete = [id for id in ids_list if id.startswith(unique_filename)]
+
+            def delete_from_vectorstore(vectorstore, ids, collection):
+                if ids:
+                    vectorstore.delete(ids)
+                    vectorstore.persist()
+                    return self._response(
+                        f"Documents with filename = {unique_filename} deleted successfully from {collection}.",
+                        "Validation"
+                    )
+                else:
+                    return self._response(
+                        f"No documents found with filename = {unique_filename} in {collection}.",
+                        "Error"
+                    )
+
+            response_docs = delete_from_vectorstore(self.chunks_vectorstore, ids_to_delete, "chunks_vectorstore")
+
+            unique_filename = unique_filename.replace('-', ' ')
+
+            query = f"""
+                SELECT table_name
+                FROM information_schema.tables
+                WHERE table_name LIKE '{unique_filename}%'
+            """
+
+            self.cursor.execute(query)
+            tables_to_delete = [row[0] for row in self.cursor.fetchall()]
+
+            for table in tables_to_delete:
+                self.cursor.execute(f'DROP TABLE IF EXISTS "{table}" CASCADE;')
+
+            self.start_connection.commit()
+
+            if response_docs["type"] == "Validation":
+                return self._response(
+                    f"Documents and questions with filename = {unique_filename} deleted successfully.",
+                    "Validation"
+                )
+            elif response_docs["type"] == "Error":
+                return self._response(
+                    f"No documents or questions found with filename = {unique_filename}.",
+                    "Error"
+                )
+            else:
+                return self._response(
+                    f"Partial deletion: {response_docs['message']}",
+                    "Error"
+                )
+
+        except Exception as e:
+            return self._response(
+                f"Error occurred while deleting documents: {e}",
+                "Error"
+            )
+
+# chatbot = AiCompanyFileService()
+
+# response = asyncio.run(chatbot.document_uploading(file_path))
+# print(response)
+
+# response = chatbot.delete_documents_by_ids(file_path)
+# print(response)
