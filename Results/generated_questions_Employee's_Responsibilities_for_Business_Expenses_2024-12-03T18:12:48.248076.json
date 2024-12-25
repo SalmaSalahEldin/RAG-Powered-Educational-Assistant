@@ -1,0 +1,102 @@
+{
+    "metadata": {
+        "generated_at": "2024-12-03T18:12:48.248025",
+        "total_questions": 5,
+        "book_title": "Project Management Professional Guide",
+        "generation_method": "RAG Pipeline",
+        "embedding_model": "text-embedding-3-large",
+        "vector_store": "Chroma"
+    },
+    "questions": [
+        {
+            "id": "Q1",
+            "topic": "Employee's Responsibilities for Business Expenses",
+            "type": "MCQ",
+            "question": "What is the maximum amount that the company will reimburse without a receipt?",
+            "options": {
+                "A": "50 EGP",
+                "B": "100 EGP",
+                "C": "150 EGP",
+                "D": "200 EGP"
+            },
+            "correct_answer": "A",
+            "explanation": "According to the content, the company will not reimburse expenditure greater than 50 EGP without a receipt.",
+            "source": {
+                "context": "Company Expense Report\nCompany regulations require that traveling personnel maintain an adequate record for each trip and post all pertinent information in support of each expenditure (who, what, why, when and how much). All Expense Reports must be approved by the employee’s Manager in accordance with the Supervisor/Manager’s expenditure authorization. Expense reports must be submitted to the Finance Department monthly and last month’s report could be upon return or maximum within five (5) days of the first expenditure incurred or reimbursement can be delayed while current reports are processed. Employee’s Responsibilities Exception approval is required if employee business expenses are not clearly in accordance with policy. Any of these conditions require exception approval: Unusual expense, Expense could possibly appear to be inappropriate, Expense exceeds the guidelines, Expense reports not submitted in a timely manner, Photocopy/inadequate/missing receipt. Approving manager may not be a direct or indirect beneficiary of the expense being approved. For example, an expense report for business meetings must be approved by the next highest level of management not in attendance. Receipts are required for reimbursement of all authorized business expenses. The receipt must identify the name of the establishment, date, actual amount incurred, description, and receipt of payment.",
+                "confidence_score": 0.8085179640806132
+            }
+        },
+        {
+            "id": "Q2",
+            "topic": "Employee's Responsibilities for Business Expenses",
+            "type": "MCQ",
+            "question": "What is the per diem travel allowance for a company employee?",
+            "options": {
+                "A": "50$",
+                "B": "100$",
+                "C": "150$",
+                "D": "200$"
+            },
+            "correct_answer": "A",
+            "explanation": "According to the content, the traveler will have 50$ per diem as travel allowance.",
+            "source": {
+                "context": "Company Expense Report\nCompany regulations require that traveling personnel maintain an adequate record for each trip and post all pertinent information in support of each expenditure (who, what, why, when and how much). All Expense Reports must be approved by the employee’s Manager in accordance with the Supervisor/Manager’s expenditure authorization. Expense reports must be submitted to the Finance Department monthly and last month’s report could be upon return or maximum within five (5) days of the first expenditure incurred or reimbursement can be delayed while current reports are processed. Employee’s Responsibilities Exception approval is required if employee business expenses are not clearly in accordance with policy. Any of these conditions require exception approval: Unusual expense, Expense could possibly appear to be inappropriate, Expense exceeds the guidelines, Expense reports not submitted in a timely manner, Photocopy/inadequate/missing receipt. Approving manager may not be a direct or indirect beneficiary of the expense being approved. For example, an expense report for business meetings must be approved by the next highest level of management not in attendance. Receipts are required for reimbursement of all authorized business expenses. The receipt must identify the name of the establishment, date, actual amount incurred, description, and receipt of payment.",
+                "confidence_score": 0.9085171740806175
+            }
+        },
+        {
+            "id": "Q3",
+            "topic": "Employee's Responsibilities for Business Expenses",
+            "type": "MCQ",
+            "question": "What is the maximum cash advance a company employee can receive per trip?",
+            "options": {
+                "A": "500$",
+                "B": "750$",
+                "C": "1000$",
+                "D": "1250$"
+            },
+            "correct_answer": "C",
+            "explanation": "According to the content, a cash advance of up to 1000$ per trip will be given to the traveler to cover their living expenses.",
+            "source": {
+                "context": "Company Expense Report\nCompany regulations require that traveling personnel maintain an adequate record for each trip and post all pertinent information in support of each expenditure (who, what, why, when and how much). All Expense Reports must be approved by the employee’s Manager in accordance with the Supervisor/Manager’s expenditure authorization. Expense reports must be submitted to the Finance Department monthly and last month’s report could be upon return or maximum within five (5) days of the first expenditure incurred or reimbursement can be delayed while current reports are processed. Employee’s Responsibilities Exception approval is required if employee business expenses are not clearly in accordance with policy. Any of these conditions require exception approval: Unusual expense, Expense could possibly appear to be inappropriate, Expense exceeds the guidelines, Expense reports not submitted in a timely manner, Photocopy/inadequate/missing receipt. Approving manager may not be a direct or indirect beneficiary of the expense being approved. For example, an expense report for business meetings must be approved by the next highest level of management not in attendance. Receipts are required for reimbursement of all authorized business expenses. The receipt must identify the name of the establishment, date, actual amount incurred, description, and receipt of payment.",
+                "confidence_score": 0.9785171740806144
+            }
+        },
+        {
+            "id": "Q4",
+            "topic": "Employee's Responsibilities for Business Expenses",
+            "type": "MCQ",
+            "question": "Who should approve an employee's expense report at the company?",
+            "options": {
+                "A": "The employee's manager",
+                "B": "The finance department",
+                "C": "The HR department",
+                "D": "The operations manager"
+            },
+            "correct_answer": "A",
+            "explanation": "According to the content, all Expense Reports must be approved by the employee’s Manager in accordance with the Supervisor/Manager’s expenditure authorization.",
+            "source": {
+                "context": "Company Expense Report\nCompany regulations require that traveling personnel maintain an adequate record for each trip and post all pertinent information in support of each expenditure (who, what, why, when and how much). All Expense Reports must be approved by the employee’s Manager in accordance with the Supervisor/Manager’s expenditure authorization. Expense reports must be submitted to the Finance Department monthly and last month’s report could be upon return or maximum within five (5) days of the first expenditure incurred or reimbursement can be delayed while current reports are processed. Employee’s Responsibilities Exception approval is required if employee business expenses are not clearly in accordance with policy. Any of these conditions require exception approval: Unusual expense, Expense could possibly appear to be inappropriate, Expense exceeds the guidelines, Expense reports not submitted in a timely manner, Photocopy/inadequate/missing receipt. Approving manager may not be a direct or indirect beneficiary of the expense being approved. For example, an expense report for business meetings must be approved by the next highest level of management not in attendance. Receipts are required for reimbursement of all authorized business expenses. The receipt must identify the name of the establishment, date, actual amount incurred, description, and receipt of payment.",
+                "confidence_score": 0.9085171740806132
+            }
+        },
+        {
+            "id": "Q5",
+            "topic": "Employee's Responsibilities for Business Expenses",
+            "type": "MCQ",
+            "question": "What is the maximum layover time allowed for Lowest Fare Routing (LFR) in the company?",
+            "options": {
+                "A": "2 hours",
+                "B": "3 hours",
+                "C": "4 hours",
+                "D": "5 hours"
+            },
+            "correct_answer": "C",
+            "explanation": "According to the content, Lowest Fare Routing (LFR) should result in total layover time not exceeding 4 hours.",
+            "source": {
+                "context": "Company Expense Report\nCompany regulations require that traveling personnel maintain an adequate record for each trip and post all pertinent information in support of each expenditure (who, what, why, when and how much). All Expense Reports must be approved by the employee’s Manager in accordance with the Supervisor/Manager’s expenditure authorization. Expense reports must be submitted to the Finance Department monthly and last month’s report could be upon return or maximum within five (5) days of the first expenditure incurred or reimbursement can be delayed while current reports are processed. Employee’s Responsibilities Exception approval is required if employee business expenses are not clearly in accordance with policy. Any of these conditions require exception approval: Unusual expense, Expense could possibly appear to be inappropriate, Expense exceeds the guidelines, Expense reports not submitted in a timely manner, Photocopy/inadequate/missing receipt. Approving manager may not be a direct or indirect beneficiary of the expense being approved. For example, an expense report for business meetings must be approved by the next highest level of management not in attendance. Receipts are required for reimbursement of all authorized business expenses. The receipt must identify the name of the establishment, date, actual amount incurred, description, and receipt of payment.",
+                "confidence_score": 0.7085185940806158
+            }
+        }
+    ]
+}
