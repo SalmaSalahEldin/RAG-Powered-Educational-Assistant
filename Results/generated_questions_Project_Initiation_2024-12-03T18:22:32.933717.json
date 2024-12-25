@@ -1,0 +1,102 @@
+{
+    "metadata": {
+        "generated_at": "2024-12-03T18:22:32.933604",
+        "total_questions": 5,
+        "book_title": "Project Management Professional Guide",
+        "generation_method": "RAG Pipeline",
+        "embedding_model": "text-embedding-3-large",
+        "vector_store": "Chroma"
+    },
+    "questions": [
+        {
+            "id": "Q1",
+            "topic": "Project Initiation",
+            "type": "MCQ",
+            "question": "What is the requirement for an expense report to be approved at the company?",
+            "options": {
+                "A": "The report must be approved by the Finance Department",
+                "B": "The report must be approved by the employee’s Manager",
+                "C": "The report must be approved by the HR Department",
+                "D": "The report must be approved by the Operations Manager"
+            },
+            "correct_answer": "B",
+            "explanation": "According to the content, all Expense Reports at the company must be approved by the employee’s Manager in accordance with the Supervisor/Manager’s expenditure authorization.",
+            "source": {
+                "context": "Company Expense Report\nCompany regulations require that traveling personnel maintain an adequate record for each trip and post all pertinent information in support of each expenditure (who, what, why, when and how much). All Expense Reports must be approved by the employee’s Manager in accordance with the Supervisor/Manager’s expenditure authorization. Expense reports must be submitted to the Finance Department monthly and last month’s report could be upon return or maximum within five (5) days of the first expenditure incurred or reimbursement can be delayed while current reports are processed. Employee’s Responsibilities Exception approval is required if employee business expenses are not clearly in accordance with policy. Any of these conditions require exception approval: Unusual expense, Expense could possibly appear to be inappropriate, Expense exceeds the guidelines, Expense reports not submitted in a timely manner, Photocopy/inadequate/missing receipt. Approving manager may not be a direct or indirect beneficiary of the expense being approved. For example, an expense report for business meetings must be approved by the next highest level of management not in attendance. Receipts are required for reimbursement of all authorized business expenses. The receipt must identify the name of the establishment, date, actual amount incurred, description, and receipt of payment.",
+                "confidence_score": 0.9456096467101223
+            }
+        },
+        {
+            "id": "Q2",
+            "topic": "Project Initiation",
+            "type": "MCQ",
+            "question": "What is the maximum cash advance given to a traveler per trip at the company?",
+            "options": {
+                "A": "$500",
+                "B": "$1000",
+                "C": "$1500",
+                "D": "$2000"
+            },
+            "correct_answer": "B",
+            "explanation": "According to the content, a cash advance of up to $1000 per trip is given to the traveler to cover his living expenses at the company.",
+            "source": {
+                "context": "Company Expense Report\nWhile these guidelines are intended to be comprehensive, it is impossible to anticipate every situation encountered by a traveler. The traveler is expected to apply these guidelines on a conservative basis, consistent with normal living standards. Employees are expected to Exercise good judgment with respect to expenses, Spend the company’s money as carefully and judiciously as they would their own, and Report all expenses and advances promptly and accurately with required documentation. Business Trip Outside Egypt (Abroad) Procedures: In case of Air Travel, all employees must utilize Lowest Fare Routing (LFR)- LFR is quoted logical lowest fare for the business trip, which will (where possible) Result in total layover time not exceeding 4 hours, Require no more than one interim stop each way, Employees traveling for a duration of 2 months or more will have a minimum carriage of 40 Kilograms, Employees traveling for a duration less than 2 months could be subject to flights with lower carriage options. Minimum of 23 Kilograms, All employees residing in Cairo shall travel directly from Cairo’s airport, All employees residing in Alexandria shall travel directly from Alexandria’s airport unless there are no available air flights from Alexandria Airport, the company will provide transportation to Cairo Airport. Should any urgency arise for the employee to travel on a short notice, and there are no flights available in his city of residency, an exception is made for the employee to travel from a different airport and the company will take responsibility for transporting the employee to the airport. This is an exceptional process that requires the HR department to receive the confirmation of the operations manager by mail for each incident individually. Any changes in flight ticket reservations, according to the employee request, should be requested 1 month before return or travel date provided that the change must be made using Lowest Fare Routing. Any delay in requesting change will be completely charged on the expense of the employee.",
+                "confidence_score": 0.7539660868587343
+            }
+        },
+        {
+            "id": "Q3",
+            "topic": "Project Initiation",
+            "type": "MCQ",
+            "question": "What is the per diem travel allowance for a traveler at the company?",
+            "options": {
+                "A": "$25",
+                "B": "$50",
+                "C": "$75",
+                "D": "$100"
+            },
+            "correct_answer": "B",
+            "explanation": "According to the content, the traveler at the company will have $50 per diem as travel allowance.",
+            "source": {
+                "context": "Company Expense Report\nTravel allowance: The traveler will have $50 per diem as travel allowance. Cash Advances: A cash advance of up to $1000 per trip will be given to the traveler to cover his living expenses. All requests for Travel Advance must be approved and submitted to the Finance Department at least (3) business days prior to the traveler’s departure. Any excess of advanced funds over expenses must be remitted promptly with the expense report. Delinquent notices will be sent on advances that have not cleared within thirty (30) days from issue date. You may not request any further advance if you currently have an advance outstanding that has not been resolved.",
+                "confidence_score": 0.9083437145583229
+            }
+        },
+        {
+            "id": "Q4",
+            "topic": "Project Initiation",
+            "type": "MCQ",
+            "question": "What is the policy for business and first-class travel at the company?",
+            "options": {
+                "A": "It is allowed and covered by the company",
+                "B": "It is allowed only if it is at the employee’s expense",
+                "C": "It is not allowed under any circumstances",
+                "D": "It is allowed with the approval of the employee’s supervisor"
+            },
+            "correct_answer": "B",
+            "explanation": "According to the content, business and first-class travel are not allowed at the company unless it is at the employee’s expense.",
+            "source": {
+                "context": "Company Expense Report\nExceptions to this policy statement will be allowed with approval of the employee’s supervisor so that the additional cost is authorized. Business and First-Class travel are not allowed unless it is at the employee’s expense.",
+                "confidence_score": 0.8868740481780665
+            }
+        },
+        {
+            "id": "Q5",
+            "topic": "Project Initiation",
+            "type": "MCQ",
+            "question": "What happens if an employee at the company does not submit their expense reports in a timely manner?",
+            "options": {
+                "A": "The employee is fined",
+                "B": "The employee is given a warning",
+                "C": "Exception approval is required",
+                "D": "The employee is terminated"
+            },
+            "correct_answer": "C",
+            "explanation": "According to the content, if an employee at the company does not submit their expense reports in a timely manner, exception approval is required.",
+            "source": {
+                "context": "Company Expense Report\nExceptions to this policy statement will be allowed with approval of the employee’s supervisor so that the additional cost is authorized. Business and First-Class travel are not allowed unless it is at the employee’s expense.",
+                "confidence_score": 0.9549302375005009
+            }
+        }
+    ]
+}
