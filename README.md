@@ -31,7 +31,7 @@ This module serves as the core of the system:
 
 - **LangChain**: A framework for building applications with large language models (LLMs). It provides tools for text splitting, document processing, and interacting with vector stores like Chroma.
   
-- **Azure Document Intelligence**: A suite of AI-powered tools from Microsoft Azure to extract structured data (e.g., tables, text) from PDFs, including complex documents with merged cells.
+- **Azure Document Intelligence**: A suite of AI-powered tools from Microsoft Azure to extract structured data (e.g., tables, text) from PDFs, including complex tables with merged cells.
 
 - **Chroma**: A vector store used to persist document embeddings and perform fast similarity search. It stores the chunks of text generated from PDFs and the corresponding embeddings.
 
