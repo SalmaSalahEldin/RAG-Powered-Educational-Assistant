@@ -78,7 +78,7 @@ Run the script, and the book will be processed, its content split into chunks, a
 
 
 
-### Deleting Files from Chroma and PostgreSQL
+### Deleting Files
 uncomment the following two lines to delete a PDF file:
 response = chatbot.delete_pdf_for_company(file_path)
 print(response)
