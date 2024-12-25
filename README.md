@@ -60,7 +60,7 @@ If you're working with a very simple PDF that doesn't contain complex tables or 
 ### 3. Modify the .env File
 replace data in .env file with your own credentials
 
-### Uploading a Book to Chroma
+### Uploading a Book 
 To upload any book to Chroma, follow these steps:
 
 Ensure the File_Service file is correctly set up and the necessary dependencies are installed.
