@@ -1,5 +1,31 @@
 # RAG-Powered-Educational-Assistant
 
+## Purpose and Overview
+
+The **RAG-Powered Educational Assistant** is designed to revolutionize the way educational content is processed and utilized. This system automates the extraction of main topics from books or documents and generates diverse, metadata-rich questions and answers. It’s built to handle complex educational materials, providing features like confidence scoring for questions, detailed clarifications for answers, and maintaining a transparent link to the original content.
+
+This system is a blend of cutting-edge AI frameworks and tools, tailored to enhance learning experiences for both educators and learners. From managing files to interacting with structured data, this assistant is an all-in-one solution for creating meaningful and engaging educational content.
+
+
+## System Features
+
+### 1. **File Management**
+The system offers robust file management capabilities, allowing users to upload books or documents for processing. It ensures that content is split into manageable chunks and stores embeddings for efficient retrieval.
+
+### 2. **Structured Data Handling**
+The system is equipped to handle complex structured data such as multi-page tables, merged cells, and intricate layouts. These are preserved during extraction and stored in a PostgreSQL database for future interaction and analysis.
+
+### 3. **SQL Agent for Data Interaction**
+The SQL agent interacts intelligently with the stored structured data, enabling queries and meaningful insights from complex datasets. It serves as the backbone for managing and utilizing structured content effectively.
+
+### 4. **Main Agent with Tools for Topic Extraction and Question Generation**
+This module serves as the core of the system:
+- Extracts **main topics** from uploaded materials.
+- Generates diverse **question types** (e.g., MCQs, open-ended, true/false) with metadata.
+- Provides **clarifications and confidence scores** for each question and answer.
+- Links each question to the relevant **source content**, ensuring traceability.
+- Outputs results in a structured JSON format, organized by topic.
+
 
 ## Tools and Frameworks Chosen
 
